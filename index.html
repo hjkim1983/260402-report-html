@@ -57,7 +57,9 @@ body { font-family: 'Noto Sans KR', sans-serif; background: var(--bg); color: va
 .label-next { background: var(--blue); color: white; }
 .label-later { background: var(--orange); color: white; }
 
-/* Tables */
+/* Tables — 가로 스크롤 래퍼 */
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 16px 0 24px; }
+.table-wrap table { margin: 0; }
 table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 13.5px; }
 th { background: var(--navy); color: white; padding: 11px 14px; text-align: left; font-weight: 500; }
 td { padding: 10px 14px; border-bottom: 1px solid var(--border); }
@@ -123,18 +125,109 @@ tr:hover { background: #edf2f7; }
 .footer { text-align: center; padding: 30px; color: var(--muted); font-size: 12px; }
 .source { font-size: 12px; color: var(--muted); margin-top: 8px; font-style: italic; }
 
+/* Mobile — PC 기본 스타일 유지 */
+@media (max-width: 768px) {
+  body { font-size: 14px; line-height: 1.65; }
+  .container { padding: 10px 12px; max-width: 100%; }
+
+  .cover { padding: 28px 16px; margin-bottom: 22px; border-radius: 10px; }
+  .cover h1 { font-size: 19px; line-height: 1.35; margin-bottom: 10px; }
+  .cover .subtitle { font-size: 14px; margin-bottom: 16px; }
+  .cover .meta { font-size: 11px; }
+  .cover .badge { font-size: 10px; padding: 3px 8px; margin-bottom: 4px; }
+
+  .section { padding: 18px 14px; margin-bottom: 14px; border-radius: 8px; }
+  .section h2 { font-size: 17px; margin-bottom: 12px; padding-bottom: 8px; }
+  .section h3 { font-size: 15px; margin: 18px 0 10px; }
+  .section h4 { font-size: 14px; }
+
+  .insight-box,
+  .risk-box,
+  .contra-box { padding: 14px 14px; margin: 14px 0; border-radius: 0 6px 6px 0; }
+
+  .tier-grid { grid-template-columns: 1fr; gap: 12px; margin: 14px 0; }
+  .tier-card { padding: 14px 16px; }
+  .tier-card h4 { font-size: 14px; }
+  .tier-card ul { font-size: 12.5px; }
+
+  .contra-list li { padding-left: 34px; margin-bottom: 14px; }
+  .contra-list li::before { width: 24px; height: 24px; font-size: 12px; }
+
+  .chart-container { margin: 14px 0; padding: 12px 10px; border-radius: 6px; }
+  .chart-title { font-size: 13px; margin-bottom: 12px; line-height: 1.4; }
+
+  .bar-chart { gap: 14px; }
+  .bar-row { flex-direction: column; align-items: stretch; gap: 6px; }
+  .bar-label { width: 100%; text-align: left; font-size: 11px; line-height: 1.35; }
+  .bar-track { height: auto; min-height: 36px; display: block; flex: none; }
+  .bar-fill {
+    min-width: 0;
+    height: auto;
+    min-height: 32px;
+    display: flex;
+    font-size: 10px;
+    padding: 8px 10px;
+    white-space: normal;
+    line-height: 1.3;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  .stacked-group { flex-direction: column; align-items: stretch; gap: 18px; margin: 12px 0; }
+  .stacked-col { max-width: none; width: 100%; }
+  .stacked-col .year { font-size: 13px; }
+  .stacked-seg { font-size: 10px; padding: 4px 2px; }
+
+  .legend { gap: 8px 12px; justify-content: flex-start; margin: 10px 0; }
+  .legend-item { font-size: 11px; }
+
+  .table-wrap { margin: 12px -6px 16px; padding: 0 2px; }
+  .table-wrap table { min-width: 520px; font-size: 11px; }
+  th, td { padding: 8px 9px; word-break: keep-all; }
+
+  .bubble-chart { height: 500px; overflow: hidden; border-radius: 6px; }
+  .bubble-chart .axis-label { font-size: 9px; }
+  .bubble-chart .quadrant-label { font-size: 8px; line-height: 1.2; max-width: 44%; }
+  .bubble-chart > .bubble:nth-child(7) {
+    width: 74px !important; height: 74px !important; left: 5% !important; top: 14% !important;
+    font-size: 9px !important; line-height: 1.2 !important; padding: 4px !important;
+  }
+  .bubble-chart > .bubble:nth-child(8) {
+    width: 66px !important; height: 66px !important; left: 4% !important; top: 56% !important;
+    font-size: 8px !important; line-height: 1.2 !important; padding: 4px !important;
+  }
+  .bubble-chart > .bubble:nth-child(9) {
+    width: 72px !important; height: 72px !important; left: 30% !important; top: 10% !important;
+    font-size: 9px !important; line-height: 1.2 !important; padding: 4px !important;
+  }
+  .bubble-chart > .bubble:nth-child(10) {
+    width: 70px !important; height: 70px !important; left: 38% !important; top: 4% !important;
+    font-size: 8px !important; line-height: 1.2 !important; padding: 4px !important;
+  }
+  .bubble-chart > .bubble:nth-child(11) {
+    width: 68px !important; height: 68px !important; left: 62% !important; top: 6% !important;
+    font-size: 8px !important; line-height: 1.2 !important; padding: 4px !important;
+  }
+  .bubble-chart > .bubble:nth-child(12) {
+    width: 64px !important; height: 64px !important; left: 28% !important; top: 44% !important;
+    font-size: 8px !important; line-height: 1.2 !important; padding: 4px !important;
+  }
+
+  .timeline { padding-left: 22px; margin: 14px 0; }
+  .tl-item { padding-left: 14px; }
+  .tl-content { font-size: 13px; }
+
+  .footer { padding: 20px 8px; font-size: 11px; }
+  .source { font-size: 11px; }
+
+  .label { font-size: 10px; padding: 2px 8px; }
+}
+
 /* Print */
 @media print {
   .cover { break-after: page; }
   .section { break-inside: avoid; }
   body { font-size: 13px; }
-}
-@media (max-width: 700px) {
-  .tier-grid { grid-template-columns: 1fr; }
-  .cover { padding: 40px 24px; }
-  .cover h1 { font-size: 24px; }
-  .section { padding: 24px 20px; }
-  .bar-label { width: 120px; font-size: 11px; }
 }
 </style>
 </head>
@@ -238,6 +331,7 @@ tr:hover { background: #edf2f7; }
   </div>
 
   <h3>2-2. 정책의 발주 전환 — 확정 사항과 미확정 사항 구분</h3>
+  <div class="table-wrap">
   <table>
     <tr>
       <th>정책</th><th>확정/시행 사항</th><th>미확정/향후 과제</th>
@@ -253,6 +347,7 @@ tr:hover { background: #edf2f7; }
       <td>원안 3기에서 2기로 축소된 경위<br>12차 기본계획 수립 임박 → 변경 가능성<br>정권 교체 시 정책 방향 변동 가능</td>
     </tr>
   </table>
+  </div>
 
   <div class="risk-box">
     <span class="label label-risk">한국 정책 리스크</span> 제11차 계획은 확정까지 19개월이 지연되었으며, 원안(대형 3기)에서 2기로 축소된 바 있다. 2025년 정치적 불확실성(대통령 탄핵)을 거쳤고, 제12차 기본계획 수립이 임박한 점은 계획 실행력의 변수다.
@@ -309,6 +404,7 @@ tr:hover { background: #edf2f7; }
   <h2>3. 밸류체인 구조: 5대 물리적 레이어 + 플랫폼</h2>
   <p>원전 산업은 수익 인식 시점과 마진 구조가 상이한 5개의 물리적 층위와 이를 지탱하는 플랫폼 레이어로 구성된다. 과거 정부 주도의 플랫폼 레이어는 빅테크의 PPA 참여를 통해 민간 자본의 역할이 빠르게 확대되고 있다.</p>
 
+  <div class="table-wrap">
   <table>
     <tr><th>레이어</th><th>역할</th><th>수익 특성</th><th>투자 시계</th><th>대표 기업</th></tr>
     <tr>
@@ -354,6 +450,7 @@ tr:hover { background: #edf2f7; }
       <td>NRC, 각국 정부,<br>MS/Amazon/Meta(PPA)</td>
     </tr>
   </table>
+  </div>
 </div>
 
 <!-- 4. VALUE CHAIN DETAIL -->
@@ -388,6 +485,7 @@ tr:hover { background: #edf2f7; }
 
   <div class="chart-container">
     <div class="chart-title">우라늄(U₃O₈) 현물 가격 추이 ($/lb)</div>
+    <div class="table-wrap">
     <table>
       <tr><th>시점</th><th>현물 가격</th><th>비고</th></tr>
       <tr><td>2021년 초</td><td>~$30</td><td>장기 저가 구간</td></tr>
@@ -397,6 +495,7 @@ tr:hover { background: #edf2f7; }
       <tr><td>2026년 1월</td><td>$94.28</td><td>2년 만에 최고 수준</td></tr>
       <tr><td>2026년 3월 말</td><td>~$84</td><td>직근 확인 가격</td></tr>
     </table>
+    </div>
     <div class="source">출처: Cameco, TradeTech, Trading Economics — 장기 계약가격은 현물보다 높은 $82~$85 수준에서 꾸준히 상승 중</div>
   </div>
   
@@ -426,6 +525,7 @@ tr:hover { background: #edf2f7; }
   <h2>5. 병목 구조 분석: 자본이 집중될 '수익의 급소'</h2>
   <p>수요 확대 구간에서 공급이 따라가지 못하는 병목을 장악한 기업이 초과 수익(Alpha)을 창출할 가능성이 높다. 다만 병목 해소 속도와 경쟁 진입에 따라 프리미엄의 지속성은 달라질 수 있다.</p>
 
+  <div class="table-wrap">
   <table>
     <tr><th>우선순위</th><th>병목 요인</th><th>영향</th><th>현재 상황 (2026.04 기준)</th></tr>
     <tr class="highlight-row">
@@ -459,6 +559,7 @@ tr:hover { background: #edf2f7; }
       <td>BTM 모델 거부(2024.11) → FTM 전환 선례<br>코로케이션 포괄 규칙 미정립</td>
     </tr>
   </table>
+  </div>
 </div>
 
 <!-- 6. SMR Economics -->
@@ -466,6 +567,7 @@ tr:hover { background: #edf2f7; }
   <h2>6. SMR 경제성: LCOE vs LACE, 그리고 FOAK 리스크</h2>
   <p>SMR 투자 시에는 FOAK(초도기) 건설 비용의 불확실성과 경제적 가치를 냉정히 구분할 필요가 있다. 단순 발전 단가(LCOE) 측면에서 SMR은 비싸 보일 수 있으나, 송전망 증설 비용 절감과 무중단 전원 공급 가치(LACE, Levelized Avoided Cost of Energy) 관점에서는 가격 민감도가 낮은 고객(데이터센터 등)에게 경쟁력을 가질 수 있다.</p>
 
+  <div class="table-wrap">
   <table>
     <tr><th>구분</th><th>LCOE 관점</th><th>LACE 관점</th></tr>
     <tr>
@@ -484,6 +586,7 @@ tr:hover { background: #edf2f7; }
       <td>빅테크 PPA가 FOAK 리스크를 상당 부분 흡수</td>
     </tr>
   </table>
+  </div>
 
   <div class="insight-box">
     <strong>참고:</strong> NuScale의 SMR은 기존 LEU(저농축우라늄)로 구동 가능하여 HALEU 공급 부족 리스크에서 비교적 자유롭다는 점이 경쟁 우위 요인 중 하나다. 반면 X-energy의 Xe-100이나 TerraPower의 Natrium 등은 HALEU를 필요로 하므로 연료 공급 확보 여부가 프로젝트 일정을 좌우한다.
@@ -497,6 +600,7 @@ tr:hover { background: #edf2f7; }
   <p>다만 한국 기업의 위탁 생산 모델은 설계사의 프로젝트가 실제로 착공되어야 매출이 발생하는 구조이므로, SMR 상업화 지연 시 수혜 시점도 함께 늦어진다는 점을 유의해야 한다.</p>
 
   <h3>한국 기업별 투자 유형 분류</h3>
+  <div class="table-wrap">
   <table>
     <tr><th>기업</th><th>투자 유형</th><th>역할</th><th>핵심 포인트</th><th>Watch Metric</th></tr>
     <tr class="highlight-row">
@@ -549,6 +653,7 @@ tr:hover { background: #edf2f7; }
       <td>해상 원전 실증 프로젝트<br>규제 프레임워크 정립 여부</td>
     </tr>
   </table>
+  </div>
 
   <div class="legend" style="margin-top:8px;">
     <div class="legend-item"><span class="label label-earn">실적형</span> 현재 가동률·수주 기반 매출</div>
@@ -567,6 +672,7 @@ tr:hover { background: #edf2f7; }
 
   <div class="chart-container">
     <div class="chart-title">글로벌 대형 가스터빈 납기 현황 (2026년 4월 기준)</div>
+    <div class="table-wrap">
     <table>
       <tr><th>OEM</th><th>현재 납기</th><th>백로그 상황</th><th>대응</th></tr>
       <tr>
@@ -588,6 +694,7 @@ tr:hover { background: #edf2f7; }
         <td>향후 2년 내 생산능력 2배 확대 계획</td>
       </tr>
     </table>
+    </div>
     <p style="font-size:13px; margin-top:8px;"><strong>비교 기준:</strong> 과거 정상 납기는 2.5~3년이었으나, 데이터센터·석탄 퇴출·전화 수요가 동시에 몰리며 5~7년으로 확대. 2025년 주문량(100.3GW)은 OEM 연간 생산능력(~30GW/년)의 약 3배 수준이다.</p>
     <div class="source">출처: S&amp;P Global, Utility Dive, RMI, EPRI, Wood Mackenzie (2025~2026)</div>
   </div>
@@ -629,6 +736,7 @@ tr:hover { background: #edf2f7; }
 <div class="section">
   <h2>10. 글로벌 기업별 투자 체크포인트</h2>
 
+  <div class="table-wrap">
   <table>
     <tr><th>기업</th><th>투자 유형</th><th>핵심 체크포인트</th><th>Watch Metric</th></tr>
     <tr>
@@ -680,6 +788,7 @@ tr:hover { background: #edf2f7; }
       <td>가스터빈 백로그 소화율<br>BWRX-300 인허가 진행</td>
     </tr>
   </table>
+  </div>
 </div>
 
 <!-- 11. KEY INSIGHTS -->
