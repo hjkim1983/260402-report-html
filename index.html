@@ -49,7 +49,9 @@ body { font-family: 'Noto Sans KR', sans-serif; background: var(--bg); color: va
 .label-risk { background: var(--red); color: white; }
 .label-new { background: var(--blue); color: white; }
 
-/* Tables */
+/* Tables — wrapper enables horizontal scroll on narrow screens */
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 16px 0 24px; }
+.table-wrap table { margin: 0; }
 table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 13.5px; }
 th { background: var(--navy); color: white; padding: 11px 14px; text-align: left; font-weight: 500; }
 td { padding: 10px 14px; border-bottom: 1px solid var(--border); }
@@ -97,6 +99,100 @@ tr:hover { background: #edf2f7; }
 /* Footer */
 .footer { text-align: center; padding: 30px; color: var(--muted); font-size: 12px; }
 .source { font-size: 12px; color: var(--muted); margin-top: 8px; font-style: italic; }
+
+/* Mobile — PC 레이아웃은 기본값 유지 */
+@media (max-width: 768px) {
+  body { font-size: 14px; line-height: 1.65; }
+  .container { padding: 10px 12px; max-width: 100%; }
+
+  .cover { padding: 28px 16px; margin-bottom: 22px; border-radius: 10px; }
+  .cover h1 { font-size: 19px; line-height: 1.35; margin-bottom: 10px; }
+  .cover .subtitle { font-size: 14px; margin-bottom: 16px; }
+  .cover .meta { font-size: 11px; }
+  .cover .badge { font-size: 10px; padding: 3px 8px; margin-bottom: 4px; }
+
+  .section { padding: 18px 14px; margin-bottom: 14px; border-radius: 8px; }
+  .section h2 { font-size: 17px; margin-bottom: 12px; padding-bottom: 8px; }
+  .section h3 { font-size: 15px; margin: 18px 0 10px; }
+  .section h4 { font-size: 14px; }
+
+  .insight-box,
+  .risk-box { padding: 14px 14px; margin: 14px 0; border-radius: 0 6px 6px 0; }
+
+  .chart-container { margin: 14px 0; padding: 12px 10px; border-radius: 6px; }
+  .chart-title { font-size: 13px; margin-bottom: 12px; line-height: 1.4; }
+
+  /* 가로 막대: 라벨 위 · 트랙 전체 너비로 텍스트 잘림 방지 */
+  .bar-chart { gap: 14px; }
+  .bar-row { flex-direction: column; align-items: stretch; gap: 6px; }
+  .bar-label { width: 100%; text-align: left; font-size: 11px; line-height: 1.35; }
+  .bar-track { height: auto; min-height: 36px; display: block; }
+  .bar-fill {
+    min-width: 0;
+    height: auto;
+    min-height: 32px;
+    display: flex;
+    font-size: 10px;
+    padding: 8px 10px;
+    white-space: normal;
+    line-height: 1.3;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  /* 누적 막대: 세로 스택 */
+  .stacked-group { flex-direction: column; align-items: stretch; gap: 18px; margin: 12px 0; }
+  .stacked-col { max-width: none; width: 100%; }
+  .stacked-col .year { font-size: 13px; }
+  .stacked-seg { font-size: 10px; padding: 4px 2px; }
+
+  .legend { gap: 8px 12px; justify-content: flex-start; margin: 10px 0; }
+  .legend-item { font-size: 11px; }
+
+  /* 테이블: 가로 스크롤 + 약간 작은 셀 */
+  .table-wrap { margin: 12px -6px 16px; padding: 0 2px; }
+  .table-wrap table { min-width: 520px; font-size: 11px; }
+  th, td { padding: 8px 9px; word-break: keep-all; }
+
+  /* 버블 차트: 높이·버블 크기·좌표 조정 */
+  .bubble-chart { height: 480px; overflow: hidden; border-radius: 6px; }
+  .bubble-chart .axis-label { font-size: 9px; }
+  .bubble-chart .axis-label[style*="rotate"] { left: 2px !important; max-width: 42%; }
+  .bubble-chart .quadrant-label { font-size: 8px; line-height: 1.2; max-width: 42%; }
+  .bubble-chart > .bubble:nth-child(7) {
+    width: 74px !important; height: 74px !important; left: 5% !important; top: 14% !important;
+    font-size: 9px !important; line-height: 1.2 !important; padding: 4px !important;
+  }
+  .bubble-chart > .bubble:nth-child(8) {
+    width: 66px !important; height: 66px !important; left: 4% !important; top: 56% !important;
+    font-size: 8px !important; line-height: 1.2 !important; padding: 4px !important;
+  }
+  .bubble-chart > .bubble:nth-child(9) {
+    width: 72px !important; height: 72px !important; left: 30% !important; top: 10% !important;
+    font-size: 9px !important; line-height: 1.2 !important; padding: 4px !important;
+  }
+  .bubble-chart > .bubble:nth-child(10) {
+    width: 70px !important; height: 70px !important; left: 38% !important; top: 4% !important;
+    font-size: 8px !important; line-height: 1.2 !important; padding: 4px !important;
+  }
+  .bubble-chart > .bubble:nth-child(11) {
+    width: 68px !important; height: 68px !important; left: 62% !important; top: 6% !important;
+    font-size: 8px !important; line-height: 1.2 !important; padding: 4px !important;
+  }
+  .bubble-chart > .bubble:nth-child(12) {
+    width: 64px !important; height: 64px !important; left: 28% !important; top: 44% !important;
+    font-size: 8px !important; line-height: 1.2 !important; padding: 4px !important;
+  }
+
+  .timeline { padding-left: 22px; margin: 14px 0; }
+  .tl-item { padding-left: 14px; }
+  .tl-content { font-size: 13px; }
+
+  .footer { padding: 20px 8px; font-size: 11px; }
+  .source { font-size: 11px; }
+
+  .label { font-size: 10px; padding: 2px 8px; }
+}
 
 /* Print */
 @media print {
@@ -171,6 +267,7 @@ tr:hover { background: #edf2f7; }
   </div>
 
   <h3>2-2. 정책의 실질적 발주 전환</h3>
+  <div class="table-wrap">
   <table>
     <tr>
       <th>정책</th><th>핵심 내용</th><th>수치/일정</th>
@@ -186,6 +283,7 @@ tr:hover { background: #edf2f7; }
       <td>2038년 원전 비중 35.2%<br>대형 원전 2기(2.8GWe) + SMR 1기(0.7GW)</td>
     </tr>
   </table>
+  </div>
 
   <div class="risk-box">
     <span class="label label-risk">한국 정책 리스크</span> 제11차 계획은 확정까지 19개월 지연되었으며, 원안(대형 3기)에서 2기로 축소되었습니다. 2025년 정치적 불확실성(대통령 탄핵)과 제12차 기본계획 수립이 임박한 점은 계획의 실행력에 대한 변수입니다.
@@ -242,6 +340,7 @@ tr:hover { background: #edf2f7; }
   <h2>3. 밸류체인 구조: 5대 물리적 레이어 + 플랫폼</h2>
   <p>원전 산업은 수익 인식 시점과 마진 구조가 상이한 5개의 물리적 층위와 이를 지탱하는 무형의 플랫폼 레이어로 재정의됩니다. 과거 정부 주도의 플랫폼 레이어는 빅테크의 PPA 참여를 통해 사실상 '민간화'되고 있습니다.</p>
 
+  <div class="table-wrap">
   <table>
     <tr><th>레이어</th><th>역할</th><th>수익 특성</th><th>대표 기업</th></tr>
     <tr>
@@ -281,6 +380,7 @@ tr:hover { background: #edf2f7; }
       <td>NRC, 각국 정부,<br>MS/Amazon/Meta(PPA)</td>
     </tr>
   </table>
+  </div>
 </div>
 
 <!-- 4. VALUE CHAIN DETAIL -->
@@ -338,6 +438,7 @@ tr:hover { background: #edf2f7; }
 <div class="section">
   <h2>5. 병목 구조 분석: 자본이 집중될 '수익의 급소'</h2>
 
+  <div class="table-wrap">
   <table>
     <tr><th>우선순위</th><th>병목 요인</th><th>영향</th><th>현재 상황</th></tr>
     <tr class="highlight-row">
@@ -371,6 +472,7 @@ tr:hover { background: #edf2f7; }
       <td>BTM 모델 거부 → FTM 전환 선례<br>코로케이션 규칙 미정립</td>
     </tr>
   </table>
+  </div>
 </div>
 
 <!-- 6. SMR Economics -->
@@ -378,6 +480,7 @@ tr:hover { background: #edf2f7; }
   <h2>6. SMR 경제성: LCOE vs LACE, 그리고 FOAK 리스크</h2>
   <p>SMR 투자 시에는 FOAK(초도기) 건설 비용의 불확실성과 경제적 가치를 냉정히 구분해야 합니다. 단순 발전 단가(LCOE) 측면에서 SMR은 비싸 보일 수 있으나, 송전망 증설 비용 절감과 무중단 전원 공급 가치(LACE, Levelized Avoided Cost of Energy) 관점에서는 데이터센터와 같은 가격 민감도가 낮은 고객에게 충분한 경쟁력을 제공합니다.</p>
 
+  <div class="table-wrap">
   <table>
     <tr><th>구분</th><th>LCOE 관점</th><th>LACE 관점</th></tr>
     <tr>
@@ -396,6 +499,7 @@ tr:hover { background: #edf2f7; }
       <td>빅테크 PPA가 FOAK 리스크를 사실상 흡수</td>
     </tr>
   </table>
+  </div>
 
   <p><strong>참고:</strong> NuScale의 SMR은 기존 LEU(저농축우라늄)로 구동 가능하여 HALEU 공급 부족 리스크에서 비교적 자유롭다는 점이 경쟁 우위입니다.</p>
 </div>
@@ -405,6 +509,7 @@ tr:hover { background: #edf2f7; }
   <h2>7. 한국 밸류체인의 재평가: 'Nuclear CMO'</h2>
   <p>한국 기업들은 서방의 설계 능력과 대비되는 독보적인 제조 및 시공 역량을 보유하고 있습니다. 설계사가 누구든 한국의 제조 역량을 거쳐야만 물리적 실체가 완성된다는 점에서, 기술 경쟁 리스크를 분산하면서도 제조 물량 확대의 수혜를 입는 '길목 투자' 대상입니다.</p>
 
+  <div class="table-wrap">
   <table>
     <tr><th>기업</th><th>역할</th><th>핵심 포인트</th><th>Watch Metric</th></tr>
     <tr class="highlight-row">
@@ -444,6 +549,7 @@ tr:hover { background: #edf2f7; }
       <td>해상 원전 실증 프로젝트<br>규제 프레임워크 정립</td>
     </tr>
   </table>
+  </div>
 </div>
 
 <!-- 8. GAS TURBINE & ADJACENT -->
@@ -455,6 +561,7 @@ tr:hover { background: #edf2f7; }
 
   <div class="chart-container">
     <div class="chart-title">글로벌 대형 가스터빈 납기 추이 (OEM 기준)</div>
+    <div class="table-wrap">
     <table>
       <tr><th>OEM</th><th>현재 납기</th><th>백로그 상황</th></tr>
       <tr>
@@ -473,6 +580,7 @@ tr:hover { background: #edf2f7; }
         <td>향후 2년 내 생산능력 2배 확대 계획</td>
       </tr>
     </table>
+    </div>
     <div class="source">출처: S&amp;P Global, Utility Dive, RMI (2025)</div>
   </div>
 
@@ -513,6 +621,7 @@ tr:hover { background: #edf2f7; }
 <div class="section">
   <h2>10. 글로벌 기업별 투자 체크포인트</h2>
 
+  <div class="table-wrap">
   <table>
     <tr><th>기업</th><th>핵심 체크포인트</th><th>Watch Metric</th></tr>
     <tr>
@@ -551,6 +660,7 @@ tr:hover { background: #edf2f7; }
       <td>장기 공급 계약 비중 및 가격 인상 폭</td>
     </tr>
   </table>
+  </div>
 </div>
 
 <!-- 11. KEY INSIGHTS -->
